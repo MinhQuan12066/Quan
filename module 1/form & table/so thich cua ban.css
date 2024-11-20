@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff;
+    text-align: center;
+}
+
+.form-container {
+    display: inline-block;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    background-color: #ff4500;
+    color: #ffffff;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+    font-size: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #3333ff;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #555555;
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+label[for="sport"],
+label[for="music"],
+label[for="reading"],
+label[for="browsing"],
+label[for="gaming"],
+label[for="movies"] {
+    color: #ff4500;
+    margin-right: 20px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    background-color: #d9d9d9;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #c0c0c0;
+}
