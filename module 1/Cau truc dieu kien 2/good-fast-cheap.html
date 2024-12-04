@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good-Fast-Cheap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .option {
+            margin: 10px 0;
+        }
+        label {
+            font-size: 18px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Good-Fast-Cheap</h1>
+<div class="option">
+    <input type="checkbox" id="good">
+    <label for="good">Good</label>
+</div>
+<div class="option">
+    <input type="checkbox" id="fast">
+    <label for="fast">Fast</label>
+</div>
+<div class="option">
+    <input type="checkbox" id="cheap">
+    <label for="cheap">Cheap</label>
+</div>
+
+<script>
+    // Lấy các checkbox
+    const good = document.getElementById("good");
+    const fast = document.getElementById("fast");
+    const cheap = document.getElementById("cheap");
+
+    // Hàm xử lý logic khi một checkbox thay đổi
+    function handleCheckboxChange(changedCheckbox) {
+        // Kiểm tra nếu cả 3 checkbox đều được chọn
+        if (good.checked && fast.checked && cheap.checked) {
+            // Bỏ chọn checkbox đầu tiên khác với checkbox vừa thay đổi
+            if (changedCheckbox === good) {
+                cheap.checked = false;
+            } else if (changedCheckbox === fast) {
+                good.checked = false;
+            } else if (changedCheckbox === cheap) {
+                fast.checked = false;
+            }
+        }
+    }
+
+    // Thêm sự kiện "change" cho mỗi checkbox
+    good.addEventListener("change", () => handleCheckboxChange(good));
+    fast.addEventListener("change", () => handleCheckboxChange(fast));
+    cheap.addEventListener("change", () => handleCheckboxChange(cheap));
+</script>
+</body>
+</html>

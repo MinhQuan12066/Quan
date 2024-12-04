@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tính chỉ số BMI</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<h1>Tính chỉ số BMI</h1>
+<form id="bmiForm">
+  <label for="weight"> Nhập cân nặng (kg):</label><br>
+  <input type="number" id="weight" name="weight" step="0.1" required><br><br>
+
+  <label for="height"> Nhập chiều cao (m):</label><br>
+  <input type="number" id="height" name="height" step="0.01" required><br><br>
+
+  <button type="button" onclick="calculateBMI()">Kiểm tra</button>
+</form>
+<div id="result" class="result"></div>
+
+<script>
+  function calculateBMI() {
+    // Lấy giá trị cân nặng và chiều cao
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
+
+    // Kiểm tra nếu input không hợp lệ
+    if (!weight || !height || weight <= 0 || height <= 0) {
+      document.getElementById("result").textContent = "Vui lòng nhập số liệu hợp lệ!";
+      return;
+    }
+
+    // Tính BMI
+    const bmi = weight / (height ** 2);
+
+    // Phân loại BMI
+    let interpretation;
+    if (bmi < 18.5) {
+      interpretation = "Underweight";
+    } else if (bmi >= 18.5 && bmi < 25.0) {
+      interpretation = "Normal";
+    } else if (bmi >= 25.0 && bmi < 30.0) {
+      interpretation = "Overweight";
+    } else {
+      interpretation = "Obese";
+    }
+
+    // Hiển thị kết quả
+    document.getElementById("result").textContent =
+            `Chỉ số BMI của bạn: ${bmi.toFixed(2)} - Phân loại: ${interpretation}`;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính số ngày trong tháng</title>
+</head>
+<body>
+<div class="container">
+    <h1>Kiểm tra số ngày trong tháng</h1>
+    <div class="content">
+        <label for="month">Nhập tháng :</label>
+        <input type="number" id="month" min="1" max="12">
+        <button onclick="calculateDays()">Check</button>
+        <p id="result"></p>
+    </div>
+</div>
+
+<script>
+    function calculateDays() {
+        // Lấy giá trị tháng từ input
+        var month = document.getElementById("month").value;
+        var resultText = "";
+
+        // Dùng câu lệnh switch-case để xác định số ngày của tháng
+        switch (parseInt(month)) {
+            case 1:  // Tháng 1 (31 ngày)
+            case 3:  // Tháng 3 (31 ngày)
+            case 5:  // Tháng 5 (31 ngày)
+            case 7:  // Tháng 7 (31 ngày)
+            case 8:  // Tháng 8 (31 ngày)
+            case 10: // Tháng 10 (31 ngày)
+            case 12: // Tháng 12 (31 ngày)
+                resultText = "Tháng " + month + " có 31 ngày.";
+                break;
+            case 4:  // Tháng 4 (30 ngày)
+            case 6:  // Tháng 6 (30 ngày)
+            case 9:  // Tháng 9 (30 ngày)
+            case 11: // Tháng 11 (30 ngày)
+                resultText = "Tháng " + month + " có 30 ngày.";
+                break;
+            case 2:  // Tháng 2
+                // Kiểm tra năm nhuận
+                var year = new Date().getFullYear();
+                var isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+                if (isLeapYear) {
+                    resultText = "Tháng " + month + " năm nay có 29 ngày (năm nhuận).";
+                } else {
+                    resultText = "Tháng " + month + " có 28 ngày.";
+                }
+                break;
+            default:
+                resultText = "Vui lòng nhập một tháng hợp lệ từ 1 đến 12.";
+                break;
+        }
+
+        // Hiển thị kết quả
+        document.getElementById("result").innerText = resultText;
+    }
+</script>
+</body>
+</html>

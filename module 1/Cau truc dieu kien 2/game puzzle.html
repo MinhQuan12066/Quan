@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Puzzle Nobita</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .puzzle-container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+    }
+    .puzzle-item {
+      width: 100px;
+      height: 100px;
+      background-color: #ddd;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="puzzle-container" id="puzzleContainer">
+  <div class="puzzle-item" id="item1"></div>
+  <div class="puzzle-item" id="item2"></div>
+  <div class="puzzle-item" id="item3"></div>
+  <div class="puzzle-item" id="item4"></div>
+  <div class="puzzle-item" id="item5"></div>
+  <div class="puzzle-item" id="item6"></div>
+  <div class="puzzle-item" id="item7"></div>
+  <div class="puzzle-item" id="item8"></div>
+  <div class="puzzle-item" id="item9"></div>
+</div>
+
+<div id="message">Chúc mừng, bạn đã hoàn thành bức tranh!</div>
+
+<script>
+  // Các phần của bức tranh Nobita (cắt bức tranh thành 9 phần nhỏ)
+  let imageUrls = {
+    item1: "url('https://via.placeholder.com/100x100/FF5733/FFFFFF?text=1')", // Thay đổi bằng phần 1 của bức tranh Nobita
+    item2: "url('https://via.placeholder.com/100x100/33FF57/FFFFFF?text=2')", // Thay đổi bằng phần 2 của bức tranh Nobita
+    item3: "url('https://via.placeholder.com/100x100/3357FF/FFFFFF?text=3')", // Thay đổi bằng phần 3 của bức tranh Nobita
+    item4: "url('https://via.placeholder.com/100x100/FF33A1/FFFFFF?text=4')", // Thay đổi bằng phần 4 của bức tranh Nobita
+    item5: "url('https://via.placeholder.com/100x100/F3FF33/FFFFFF?text=5')", // Thay đổi bằng phần 5 của bức tranh Nobita
+    item6: "url('https://via.placeholder.com/100x100/33FFF4/FFFFFF?text=6')", // Thay đổi bằng phần 6 của bức tranh Nobita
+    item7: "url('https://via.placeholder.com/100x100/FF5733/FFFFFF?text=7')", // Thay đổi bằng phần 7 của bức tranh Nobita
+    item8: "url('https://via.placeholder.com/100x100/FFF533/FFFFFF?text=8')", // Thay đổi bằng phần 8 của bức tranh Nobita
+    item9: "url('https://via.placeholder.com/100x100/FF33FF/FFFFFF?text=9')"  // Thay đổi bằng phần 9 của bức tranh Nobita
+  };
+
+  // Gán ảnh cho các ô vuông khi người chơi click vào
+  function setImage(itemId, imageUrl) {
+    document.getElementById(itemId).style.backgroundImage = imageUrl;
+  }
+
+  // Xử lý sự kiện khi click vào ô vuông
+  function onPuzzleItemClick(itemId) {
+    if (itemId === "item1") {
+      setImage(itemId, imageUrls.item1);
+    } else if (itemId === "item2") {
+      setImage(itemId, imageUrls.item2);
+    } else if (itemId === "item3") {
+      setImage(itemId, imageUrls.item3);
+    } else if (itemId === "item4") {
+      setImage(itemId, imageUrls.item4);
+    } else if (itemId === "item5") {
+      setImage(itemId, imageUrls.item5);
+    } else if (itemId === "item6") {
+      setImage(itemId, imageUrls.item6);
+    } else if (itemId === "item7") {
+      setImage(itemId, imageUrls.item7);
+    } else if (itemId === "item8") {
+      setImage(itemId, imageUrls.item8);
+    } else if (itemId === "item9") {
+      setImage(itemId, imageUrls.item9);
+    }
+
+    // Kiểm tra xem tất cả các ô đã hoàn thành chưa
+    checkPuzzleCompletion();
+  }
+
+  // Kiểm tra xem tất cả các ô đã hoàn thành chưa
+  function checkPuzzleCompletion() {
+    if (
+            document.getElementById("item1").style.backgroundImage === imageUrls.item1 &&
+            document.getElementById("item2").style.backgroundImage === imageUrls.item2 &&
+            document.getElementById("item3").style.backgroundImage === imageUrls.item3 &&
+            document.getElementById("item4").style.backgroundImage === imageUrls.item4 &&
+            document.getElementById("item5").style.backgroundImage === imageUrls.item5 &&
+            document.getElementById("item6").style.backgroundImage === imageUrls.item6 &&
+            document.getElementById("item7").style.backgroundImage === imageUrls.item7 &&
+            document.getElementById("item8").style.backgroundImage === imageUrls.item8 &&
+            document.getElementById("item9").style.backgroundImage === imageUrls.item9
+    ) {
+      document.getElementById("message").style.display = "block"; // Hiển thị thông báo hoàn thành
+    }
+  }
+
+  // Thêm sự kiện click vào các ô
+  document.getElementById("item1").addEventListener("click", () => onPuzzleItemClick("item1"));
+  document.getElementById("item2").addEventListener("click", () => onPuzzleItemClick("item2"));
+  document.getElementById("item3").addEventListener("click", () => onPuzzleItemClick("item3"));
+  document.getElementById("item4").addEventListener("click", () => onPuzzleItemClick("item4"));
+  document.getElementById("item5").addEventListener("click", () => onPuzzleItemClick("item5"));
+  document.getElementById("item6").addEventListener("click", () => onPuzzleItemClick("item6"));
+  document.getElementById("item7").addEventListener("click", () => onPuzzleItemClick("item7"));
+  document.getElementById("item8").addEventListener("click", () => onPuzzleItemClick("item8"));
+  document.getElementById("item9").addEventListener("click", () => onPuzzleItemClick("item9"));
+</script>
+
+</body>
+</html>

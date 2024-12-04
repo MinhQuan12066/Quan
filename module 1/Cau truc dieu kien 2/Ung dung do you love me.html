@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<h1>Do you love me?</h1>
+<button id="yes">YES</button>
+<button id="no">NO</button>
+
+<script>
+    const yesButton = document.getElementById('yes');
+    const noButton = document.getElementById('no');
+
+    // Xử lý sự kiện click vào nút YES
+    yesButton.addEventListener('click', () => {
+        alert('<3');
+    });
+
+    // Xử lý sự kiện di chuột lên nút NO
+    noButton.addEventListener('mouseover', () => {
+        // Tạo vị trí ngẫu nhiên
+        const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+        // Cập nhật vị trí cho nút NO
+        noButton.style.left = `${randomX}px`;
+        noButton.style.top = `${randomY}px`;
+    });
+</script>
+</body>
+</html>
